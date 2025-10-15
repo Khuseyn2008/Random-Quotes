@@ -1,5 +1,5 @@
 const getQuoteBtn = document.querySelector('.getQuoteBtn'); // Кнопка получить цитату
-const quoteBlock = document.querySelector('.quoteBlock'); // Блок для отображения цитаты
+const quoteBlock = document.querySelector('.quoteBlock'); // Блок для цитаты
 const quoteText = document.querySelector('.quoteText'); // Текст цитаты
 const quoteAuthor = document.querySelector('.quoteAuthor'); // Автор цитаты
 const addFavoriteBtn = document.querySelector('.addFavoriteBtn'); // Кнопка добавить в избранное
