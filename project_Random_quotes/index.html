@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Quotes</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col items-center p-4">
+
+  <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6 mt-10">
+    <h1 class="text-2xl font-semibold text-center mb-6">Цитаты</h1>
+
+    <button
+      class="getQuoteBtn w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded cursor-pointer transition">
+      Получить цитату
+    </button>
+
+    <div class="quoteBlock mt-6 text-center hidden">
+      <p class="quoteText text-lg italic mb-2">"Цитата появится здесь..."</p>
+      <p class="quoteAuthor text-gray-600">— Автор</p>
+
+      <button
+        class="addFavoriteBtn mt-4 bg-yellow-400 hover:bg-yellow-500 text-white font-medium py-2 px-4 rounded cursor-pointer transition">
+        Добавить в избранное
+      </button>
+    </div>
+  </div>
+
+  <div class="w-full max-w-md mt-8">
+    <h2 class="text-xl font-semibold mb-4 text-center">Избранные цитаты</h2>
+    <ul class="favoritesList space-y-3">
+        
+    </ul>
+  </div>
+  <script src="script.js">
+
+  </script>
+</body>
+</html>
