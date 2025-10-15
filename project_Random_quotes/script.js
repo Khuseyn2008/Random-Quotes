@@ -5,15 +5,14 @@ const quoteAuthor = document.querySelector('.quoteAuthor'); // Автор цит
 const addFavoriteBtn = document.querySelector('.addFavoriteBtn'); // Кнопка добавить в избранное
 const favoritesList = document.querySelector('.favoritesList'); // Список избранных цитат
 
-let favQuote = null;  // Текущая выбранная цитата
-let saveQuoteFav = [];  // Массив сохранённых цитат
-const api_url = 'https://dummyjson.com/quotes'; // URL API для получения цитат
+let favQuote = null;  
+let saveQuoteFav = []; 
+const api_url = 'https://dummyjson.com/quotes'; // ссылка API 
 
-// Загружаем сохранённые цитаты из localStorage при загрузке страницы
+// Загружаем сохранённые продукты из localStorage при загрузке страницы
 if (localStorage.getItem('saveQuoteFav')) {
   saveQuoteFav = JSON.parse(localStorage.getItem('saveQuoteFav'));
   saveQuoteFav.forEach(quote => {
-    // Создаем HTML-разметку для каждой цитаты и добавляем её в список избранного
     const markyp = `
       <div id="quoteBlock"
         class="relative max-w-2xl mx-auto p-6 bg-slate-200 rounded-lg shadow-md" 
@@ -29,7 +28,6 @@ if (localStorage.getItem('saveQuoteFav')) {
   });
 }
 
-// Получаем все цитаты с API (для примера — вывод в консоль)
 fetch(api_url)
 .then((response) => {
   if (!response.ok) {
@@ -44,7 +42,7 @@ fetch(api_url)
   console.error('Ошибка запроса:', error);
 });
 
-// Обработчик нажатия кнопки "Получить цитату"
+//  нажимаем на кнопку "Получить цитату"
 getQuoteBtn.addEventListener('click', () => {
   function getQuote(url) {
     fetch(url)
@@ -58,10 +56,10 @@ getQuoteBtn.addEventListener('click', () => {
         quoteText.textContent = `"${randomquote.quote}"`;
         quoteAuthor.textContent = `— ${randomquote.author}`;
 
-        // Показываем блок с цитатой (убираем класс hidden)
+        //  класс hidden-а даф мекнем
         quoteBlock.classList.remove('hidden');
 
-        // Сохраняем текущую цитату для добавления в избранное
+        // Сохраняем текущую цитату
         favQuote = randomquote;
 
         console.log(data);
@@ -71,11 +69,11 @@ getQuoteBtn.addEventListener('click', () => {
   getQuote(api_url);
 });
 
-// Обработчик кнопки "Добавить в избранное"
+//кнопкаи "Добавить в избранное"
 addFavoriteBtn.addEventListener('click', function displayQuote() {
   const randomquote = favQuote;
 
-  // Добавляем цитату в массив и сохраняем в localStorage
+  // Добавляем цитату и сохраняем в localStorage
   saveQuoteFav.push(randomquote);
   localStorage.setItem('saveQuoteFav', JSON.stringify(saveQuoteFav));
 
@@ -95,10 +93,10 @@ addFavoriteBtn.addEventListener('click', function displayQuote() {
   favoritesList.innerHTML += markyp;
 });
 
-// Обработчик кликов по списку избранных цитат (для удаления)
+// Избранные 
 favoritesList.addEventListener('click', (e) => {
   if (e.target.dataset.name !== 'delete-from-favorites') {
-    return; // Если клик не по кнопке удаления, ничего не делаем
+    return;
   }
   const quoteBlock = e.target.closest('#quoteBlock');
   if (quoteBlock) {
