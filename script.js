@@ -71,11 +71,11 @@ getQuoteBtn.addEventListener('click', () => {
 
 addFavoriteBtn.addEventListener('click', function displayQuote() {
 
-  const favoriteQuotesIndex = saveQuoteFav.some((fp) => fp.id === favQuote.id);
-  if (favoriteQuotesIndex) {
-    return
+  const favoriteQuotesIndex = saveQuoteFav.findIndex((fp) => fp.id === favQuote.id);
+  if (favoriteQuotesIndex !== -1) {
+    return;
   }
-  
+    
   const randomquote = favQuote;
 
   saveQuoteFav.push(randomquote);
